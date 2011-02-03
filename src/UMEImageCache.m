@@ -7,7 +7,11 @@
 //
 
 #import "UMEImageCache.h"
-#import <UMEKit/UMEToolbar.h>
+#if UME_NON_FRAMEWORK_COMPILE
+#import "UMEBarButtonItem.h"
+#else
+#import <UMEKit/UMEBarButtonItem.h>
+#endif
 
 NSImage *UMEImageNamed(NSString *name) {
     static NSMutableDictionary *sImageCache = nil;
@@ -18,7 +22,7 @@ NSImage *UMEImageNamed(NSString *name) {
     
     NSImage *img = [sImageCache objectForKey:name];
     if (!img) {
-        NSBundle *b = [NSBundle bundleForClass:[UMEToolbar class]];
+        NSBundle *b = [NSBundle bundleForClass:[UMEBarButtonItem class]];
         
         img = [[[NSImage alloc] initWithContentsOfFile:[b pathForImageResource:name]] autorelease];
         [sImageCache setObject:img forKey:name];

@@ -15,7 +15,11 @@
 #import "UMEBarButtonItemButtonCell.h"
 #import "UMEBarButtonItemButton.h"
 #import "UMEImageCache.h"
+#if UME_NON_FRAMEWORK_COMPILE
+#import "UMEBarButtonItem.h"
+#else
 #import <UMEKit/UMEBarButtonItem.h>
+#endif
 
 #define MIN_WIDTH 36
 #define MIN_BACK_WIDTH 46
@@ -31,7 +35,6 @@
 static NSShadow *sTitleShadow = nil;
 
 @interface UMEBarButtonItem ()
-@property (nonatomic) UMEBarStyle barStyle;            // default is UMEBarStyleDefault
 @property (nonatomic, getter=isSpace) BOOL space;
 @end
 

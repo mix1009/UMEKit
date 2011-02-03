@@ -12,8 +12,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#if UME_NON_FRAMEWORK_COMPILE
+#import "UMEBarItem.h"
+#import "UMEInterface.h"
+#else
 #import <UMEKit/UMEBarItem.h>
 #import <UMEKit/UMEInterface.h>
+#endif
 
 typedef enum {
     UMEBarButtonItemStylePlain,    // shows glow when pressed
@@ -68,8 +73,10 @@ typedef enum {
 
 @property (nonatomic, retain) NSView *customView;
 @property (nonatomic) UMEBarButtonItemStyle style;            // default is UMEBarButtonItemStylePlain
+@property (nonatomic) UMEBarStyle barStyle;            // default is UMEBarStyleDefault
 @property (nonatomic) CGFloat width;            // default is 0.0
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (nonatomic, assign) id target;
 @property (nonatomic) SEL action;
+@property (nonatomic, retain) NSButton *button;
 @end

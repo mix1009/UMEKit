@@ -12,7 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#if UME_NON_FRAMEWORK_COMPILE
+#import "UMEBarItem.h"
+#else
 #import <UMEKit/UMEBarItem.h>
+#endif
 
 @implementation UMEBarItem
 

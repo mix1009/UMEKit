@@ -12,9 +12,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#if UME_NON_FRAMEWORK_COMPILE
 #import "UMEBarButtonItemButton.h"
+#else
+#import <UMEKit/UMEBarButtonItemButton.h>
+#endif
 #import "UMEBarButtonItemButtonCell.h"
-#import <UMEKit/UMEBarButtonItem.h>
+#import "UMEBarButtonItem.h"
 
 #define MIN_WIDTH 36
 #define MIN_HEIGHT 44

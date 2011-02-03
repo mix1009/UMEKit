@@ -12,7 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#if UME_NON_FRAMEWORK_COMPILE
+#import "UMEBarButtonItem.h"
+#else
 #import <UMEKit/UMEBarButtonItem.h>
+#endif
 #import "UMEBarButtonItemButton.h"
 #import "UMEFlippedView.h"
 
@@ -23,8 +27,6 @@
 @interface UMEBarButtonItem ()
 - (void)sizeToFit;
 - (void)layout;
-@property (nonatomic, retain) NSButton *button;
-@property (nonatomic) UMEBarStyle barStyle;            // default is UMEBarStyleDefault
 @property (nonatomic, getter=isSpace) BOOL space;
 @property (nonatomic, getter=isFlexible) BOOL flexible;
 @end

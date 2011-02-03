@@ -13,7 +13,11 @@
 //  limitations under the License.
 
 #import <Cocoa/Cocoa.h>
+#if UME_NON_FRAMEWORK_COMPILE
+#import "UMEGeometry.h"
+#else
 #import <UMEKit/UMEGeometry.h>
+#endif
 
 @interface UMEBarItem : NSObject {
     BOOL enabled;
