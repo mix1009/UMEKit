@@ -53,13 +53,13 @@ static NSShadow *sTitleShadow = nil;
         [sTitleShadow setShadowOffset:NSMakeSize(0, 1)];
         [sTitleShadow setShadowBlurRadius:0];
 
-        [pool release];
+        [pool drain];
     }
 }
 
 
 - (id)initTextCell:(NSString *)s {
-    if (self = [super initTextCell:s]) {
+    if ((self = [super initTextCell:s])) {
         [self commonInit];
     }
     return self;
@@ -67,7 +67,7 @@ static NSShadow *sTitleShadow = nil;
 
 
 - (id)initImageCell:(NSImage *)i {
-    if (self = [super initImageCell:i]) {
+    if ((self = [super initImageCell:i])) {
         [self commonInit];
     }
     return self;

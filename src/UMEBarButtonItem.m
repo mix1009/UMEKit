@@ -170,7 +170,7 @@
 
 
 - (id)initWithTitle:(NSString *)aTitle style:(UMEBarButtonItemStyle)aStyle target:(id)aTarget action:(SEL)sel {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         
         if (CUSTOM_VIEW_FLAG == aStyle) {
             self.style = UMEBarButtonItemStylePlain;
@@ -236,6 +236,12 @@
     }
 }
 
+//We need this here to avoid a compiler warning due to the redeclaration of the enabled 
+//property in this subclass
+- (BOOL)isEnabled
+{
+	return [super isEnabled];
+}
 
 - (void)setEnabled:(BOOL)yn {
     [super setEnabled:yn];

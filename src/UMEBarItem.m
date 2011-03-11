@@ -21,7 +21,7 @@
 @implementation UMEBarItem
 
 - (id)init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         self.enabled = YES;
     }
     return self;
