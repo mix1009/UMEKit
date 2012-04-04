@@ -152,6 +152,28 @@ static NSShadow *sTitleShadow = nil;
                         rightImage = UMEIMG(@"barbuttonitem_navy_plain_bg_03");
                     }
                     break;
+                case UMEBarStyleBlue:
+                    if ([self isHighlighted]) {
+                        leftImage = UMEIMG(@"barbuttonitem_blue_plain_bg_hi_01");
+                        centerImage = UMEIMG(@"barbuttonitem_blue_plain_bg_hi_02");
+                        rightImage = UMEIMG(@"barbuttonitem_blue_plain_bg_hi_03");
+                    } else {
+                        leftImage = UMEIMG(@"barbuttonitem_blue_plain_bg_01");
+                        centerImage = UMEIMG(@"barbuttonitem_blue_plain_bg_02");
+                        rightImage = UMEIMG(@"barbuttonitem_blue_plain_bg_03");
+                    }
+                    break;
+                case UMEBarStyleWhite:
+                    if ([self isHighlighted]) {
+                        leftImage = UMEIMG(@"barbuttonitem_white_plain_bg_hi_01");
+                        centerImage = UMEIMG(@"barbuttonitem_white_plain_bg_hi_02");
+                        rightImage = UMEIMG(@"barbuttonitem_white_plain_bg_hi_03");
+                    } else {
+                        leftImage = UMEIMG(@"barbuttonitem_white_plain_bg_01");
+                        centerImage = UMEIMG(@"barbuttonitem_white_plain_bg_02");
+                        rightImage = UMEIMG(@"barbuttonitem_white_plain_bg_03");
+                    }
+                    break;
                 default:
                     break;
             }
@@ -252,6 +274,17 @@ static NSShadow *sTitleShadow = nil;
                         rightImage = UMEIMG(@"barbuttonitem_navy_back_bg_03");
                     }
                     break;
+                case UMEBarStyleWhite:
+                    if ([self isHighlighted]) {
+                        leftImage = UMEIMG(@"barbuttonitem_white_back_bg_hi_01");
+                        centerImage = UMEIMG(@"barbuttonitem_white_back_bg_hi_02");
+                        rightImage = UMEIMG(@"barbuttonitem_white_back_bg_hi_03");
+                    } else {
+                        leftImage = UMEIMG(@"barbuttonitem_white_back_bg_01");
+                        centerImage = UMEIMG(@"barbuttonitem_white_back_bg_02");
+                        rightImage = UMEIMG(@"barbuttonitem_white_back_bg_03");
+                    }
+                    break;
                 default:
                     break;
             }
@@ -313,16 +346,30 @@ static NSShadow *sTitleShadow = nil;
         NSString *title = [self title];
         if ([title length]) {
             NSColor *color = nil;
-            if ([self isEnabled]) {
-                color = [NSColor whiteColor];
-            } else {
-                color = [NSColor colorWithCalibratedWhite:1.0 alpha:0.7];
-            }
+			NSShadow *shadow = nil;
+			
+			if (item.barStyle == UMEBarStyleWhite)
+			{
+				if ([self isEnabled]) {
+					color = [NSColor blackColor];
+				} else {
+					color = [NSColor colorWithCalibratedWhite:0.0 alpha:0.7];
+				}
+			}
+			else
+			{
+				shadow = sTitleShadow;
+				if ([self isEnabled]) {
+					color = [NSColor whiteColor];
+				} else {
+					color = [NSColor colorWithCalibratedWhite:1.0 alpha:0.7];
+				}
+			}
             
             NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [self font], NSFontAttributeName, 
                                         color, NSForegroundColorAttributeName, 
-                                        sTitleShadow, NSShadowAttributeName, 
+                                        shadow, NSShadowAttributeName, 
                                         nil];
             
             NSSize size = [title sizeWithAttributes:attributes];

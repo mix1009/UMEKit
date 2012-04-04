@@ -17,5 +17,7 @@ typedef enum {
     UMEBarStyleBlack            = 1,
     UMEBarStyleGray             = 2,
     UMEBarStyleNavy             = 3,
+	UMEBarStyleWhite			= 4,
+	UMEBarStyleBlue				= 5
 } UMEBarStyle;
 
