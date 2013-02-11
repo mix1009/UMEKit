@@ -29,7 +29,7 @@
 
 @property (nonatomic, getter=isEnabled) BOOL enabled;       // default is YES
 @property (nonatomic, copy) NSString *title;                // default is nil
-@property (nonatomic, retain) NSImage *image;               // default is nil
+@property (nonatomic, strong) NSImage *image;               // default is nil
 @property (nonatomic) UMEEdgeInsets imageInsets;            // default is UMEEdgeInsetsZero
 @property (nonatomic) NSInteger tag;                        // default is 0
 @end

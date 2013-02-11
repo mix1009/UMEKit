@@ -31,10 +31,6 @@
 }
 
 
-- (void)dealloc {
-    
-    [super dealloc];
-}
 
 
 //- (void)loadView {
@@ -61,10 +57,10 @@
     //                                                                              target:nil 
     //                                                                              action:nil] autorelease];
 
-    self.navigationItem.backBarButtonItem = [[[UMEBarButtonItem alloc] initWithTitle:@"FOOOOOOOOOOOOOOOOOOOO"
+    self.navigationItem.backBarButtonItem = [[UMEBarButtonItem alloc] initWithTitle:@"FOOOOOOOOOOOOOOOOOOOO"
                                                                                style:UMEBarButtonItemStyleBack 
                                                                               target:self 
-                                                                              action:@selector(pop:)] autorelease];
+                                                                              action:@selector(pop:)];
     
     [self stop:nil];
     
@@ -73,37 +69,37 @@
         //                                                                                    style:UMEBarButtonItemStylePlain 
         //                                                                                   target:self 
         //                                                                                   action:@selector(home:)] autorelease];
-        self.navigationItem.rightBarButtonItem = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemUser
+        self.navigationItem.rightBarButtonItem = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemUser
                                                                                                  target:self
-                                                                                                 action:@selector(stop:)] autorelease];
+                                                                                                 action:@selector(stop:)];
     }
     
     
     NSMutableArray *items = [NSMutableArray array];
     UMEBarButtonItem *item = nil;
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemCamera target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemCamera target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemCompose target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemCompose target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemReply target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemReply target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRedo target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRedo target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRewind target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRewind target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRefresh target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRefresh target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemEdit target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemEdit target:nil action:nil];
     [items addObject:item];
     
-    item = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemDone target:nil action:nil] autorelease];
+    item = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemDone target:nil action:nil];
     [items addObject:item];
     
     toolbar.barStyle = UMEBarStyleNavy;
@@ -113,15 +109,15 @@
 
 - (void)refresh:(id)sender {
     //self.navigationItem.leftBarButtonItem.enabled = NO;
-    self.navigationItem.leftBarButtonItem = [[[UMEActivityBarButtonItem alloc] initWithTitle:nil style:UMEBarButtonItemStylePlain target:self action:@selector(stop:)] autorelease];
+    self.navigationItem.leftBarButtonItem = [[UMEActivityBarButtonItem alloc] initWithTitle:nil style:UMEBarButtonItemStylePlain target:self action:@selector(stop:)];
     self.title = @"fooooo";
 }
 
 
 - (void)stop:(id)sender {
-    self.navigationItem.leftBarButtonItem = [[[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRefresh
+    self.navigationItem.leftBarButtonItem = [[UMEBarButtonItem alloc] initWithBarButtonSystemItem:UMEBarButtonSystemItemRefresh
                                                                                             target:self
-                                                                                            action:@selector(refresh:)] autorelease];
+                                                                                            action:@selector(refresh:)];
 }
 
 
@@ -151,20 +147,20 @@
 
 
 - (IBAction)click:(id)sender {
-    MyFirstViewController *vc = [[[MyFirstViewController alloc] init] autorelease];
+    MyFirstViewController *vc = [[MyFirstViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 - (IBAction)home:(id)sender {
-    UMEViewController *vc = [[[MyRootViewController alloc] init] autorelease];
+    UMEViewController *vc = [[MyRootViewController alloc] init];
     
-    vc.navigationItem.rightBarButtonItem = [[[UMEBarButtonItem alloc] initWithTitle:@"Dismiss" 
+    vc.navigationItem.rightBarButtonItem = [[UMEBarButtonItem alloc] initWithTitle:@"Dismiss" 
                                                                               style:UMEBarButtonItemStyleDone 
                                                                              target:self 
-                                                                             action:@selector(dismiss:)] autorelease];
+                                                                             action:@selector(dismiss:)];
     
-    UMENavigationController *nc = [[[UMENavigationController alloc] initWithRootViewController:vc] autorelease];
+    UMENavigationController *nc = [[UMENavigationController alloc] initWithRootViewController:vc];
     
     [self.navigationController presentModalViewController:nc animated:YES];
 }

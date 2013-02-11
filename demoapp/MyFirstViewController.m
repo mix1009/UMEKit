@@ -26,10 +26,6 @@
 }
 
 
-- (void)dealloc {
-    
-    [super dealloc];
-}
 
 
 - (void)viewDidLoad {
@@ -38,10 +34,10 @@
 //                                                                              target:self 
 //                                                                              action:@selector(back:)] autorelease];
     
-    self.navigationItem.rightBarButtonItem = [[[UMEBarButtonItem alloc] initWithTitle:@"BARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR" 
+    self.navigationItem.rightBarButtonItem = [[UMEBarButtonItem alloc] initWithTitle:@"BARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR" 
                                                                                 style:UMEBarButtonItemStylePlain 
                                                                                target:self 
-                                                                               action:@selector(home:)] autorelease];
+                                                                               action:@selector(home:)];
 }
 
 
@@ -74,7 +70,7 @@
 //    MyFirstViewController *vc = [[[MyFirstViewController alloc] init] autorelease];
 //    [self.navigationController pushViewController:vc animated:YES];
 
-    MySecondViewController *vc = [[[MySecondViewController alloc] init] autorelease];
+    MySecondViewController *vc = [[MySecondViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     
 //    [self.navigationController popToRootViewControllerAnimated:YES];

@@ -46,18 +46,18 @@
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidDisappear:(BOOL)animated;
 
-@property (nonatomic, retain) IBOutlet NSView *view;
+@property (nonatomic, strong) IBOutlet NSView *view;
 @property (nonatomic, readonly, copy) NSString *nibName;
-@property (nonatomic, readonly, retain) NSBundle *nibBundle;
+@property (nonatomic, readonly, strong) NSBundle *nibBundle;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) UMEViewController *parentViewController; // If this view controller is inside a navigation controller or tab bar controller, or has been presented modally by another view controller, return it.
 
 // UMENavigationController
-@property (nonatomic, readonly, retain) UMENavigationItem *navigationItem;
+@property (nonatomic, readonly, strong) UMENavigationItem *navigationItem;
 @property (nonatomic) BOOL hidesBottomBarWhenPushed; // If YES, then when this view controller is pushed into a controller hierarchy with a bottom bar (like a tab bar), the bottom bar will slide out. Default is NO.
-@property (nonatomic, readonly, retain) UMENavigationController *navigationController; // If this view controller has been pushed onto a navigation controller, return it.
+@property (nonatomic, readonly, strong) UMENavigationController *navigationController; // If this view controller has been pushed onto a navigation controller, return it.
 
 // UMETabBarController
-@property (nonatomic, retain) UMETabBarItem *tabBarItem; // Automatically created lazily with the view controller's title if it's not set explicitly.
-@property (nonatomic, readonly, retain) UMETabBarController *tabBarController; // If the view controller has a toolbar controller as its ancestor, return it. Returns nil otheriwse.
+@property (nonatomic, strong) UMETabBarItem *tabBarItem; // Automatically created lazily with the view controller's title if it's not set explicitly.
+@property (nonatomic, readonly, strong) UMETabBarController *tabBarController; // If the view controller has a toolbar controller as its ancestor, return it. Returns nil otheriwse.
 @end

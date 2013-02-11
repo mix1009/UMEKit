@@ -47,11 +47,6 @@
 }
 
 
-- (void)dealloc {
-    self.parentControl = nil;
-    self.timer = nil;
-	[super dealloc];
-}
 
 
 - (BOOL)isHighlighted {
@@ -77,7 +72,7 @@
         
 		if (value) {
 			if (!timer) {
-				self.timer = [[NSTimer scheduledTimerWithTimeInterval:animationDelay target:self selector:@selector(timerFired:) userInfo:NULL repeats:YES] retain];
+				self.timer = [NSTimer scheduledTimerWithTimeInterval:animationDelay target:self selector:@selector(timerFired:) userInfo:NULL repeats:YES];
 			} else {
 				[timer fire];
 			}

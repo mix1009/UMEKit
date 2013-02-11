@@ -22,10 +22,10 @@
     UMETabBar *tabBar;
     NSView *containerView;
     
-    id <UMETabBarControllerDelegate>delegate;
+    id <UMETabBarControllerDelegate>__strong delegate;
 
     NSArray *viewControllers;
-    UMEViewController *selectedViewController;
+    UMEViewController *__strong selectedViewController;
     NSUInteger selectedIndex;
 
     BOOL tabBarHiddenBottom;
@@ -38,11 +38,11 @@
 
 - (void)setViewControllers:(NSArray *)vcs animated:(BOOL)animated;
 
-@property (nonatomic, readonly, retain) UMETabBar *tabBar; // Provided for -[UIActionSheet showFromTabBar:]. Attempting to modify the contents of the tab bar directly will throw an exception.
-@property (nonatomic, retain) NSView *containerView;
-@property (nonatomic, assign) id <UMETabBarControllerDelegate>delegate;
+@property (nonatomic, readonly, strong) UMETabBar *tabBar; // Provided for -[UIActionSheet showFromTabBar:]. Attempting to modify the contents of the tab bar directly will throw an exception.
+@property (nonatomic, strong) NSView *containerView;
+@property (nonatomic, strong) id <UMETabBarControllerDelegate>delegate;
 @property (nonatomic, copy) NSArray *viewControllers;
-@property (nonatomic, assign) UMEViewController *selectedViewController;
+@property (nonatomic, strong) UMEViewController *selectedViewController;
 @property (nonatomic) NSUInteger selectedIndex;
 @end
 

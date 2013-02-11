@@ -37,7 +37,7 @@ typedef enum {
     UMEViewController *modalViewController;
     UMEModalTransitionStyle modalTransitionStyle;
     
-    id <UMENavigationControllerDelegate>delegate;
+    id <UMENavigationControllerDelegate>__strong delegate;
         
     BOOL navigationBarHidden;
     UMEViewController *topViewController;
@@ -56,22 +56,22 @@ typedef enum {
 - (NSArray *)popToViewController:(UMEViewController *)viewController animated:(BOOL)animated;
 - (NSArray *)popToRootViewControllerAnimated:(BOOL)animated;
 
-@property (nonatomic, readonly, retain) UMEViewController *topViewController;
+@property (nonatomic, readonly, strong) UMEViewController *topViewController;
 @property (nonatomic, readonly) UMEViewController *visibleViewController;
 
-@property (nonatomic, retain) NSArray *viewControllers;
+@property (nonatomic, strong) NSArray *viewControllers;
 - (void)setViewControllers:(NSArray *)vcs animated:(BOOL)animated; // If animated is YES, then simulate a push or pop depending on whether the new top view controller was previously in the stack.
 
 @property (nonatomic, getter=isNavigationBarHidden) BOOL navigationBarHidden;
 - (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated; // Hide or show the navigation bar. If animated, it will transition vertically using UMENavigationControllerHideShowBarDuration.
-@property (nonatomic, readonly, retain) UMENavigationBar *navigationBar; // The navigation bar managed by the controller. Pushing, popping or setting navigation items on a managed navigation bar is not supported.
+@property (nonatomic, readonly, strong) UMENavigationBar *navigationBar; // The navigation bar managed by the controller. Pushing, popping or setting navigation items on a managed navigation bar is not supported.
 
-@property (nonatomic, assign) id<UMENavigationControllerDelegate> delegate;
+@property (nonatomic, strong) id<UMENavigationControllerDelegate> delegate;
 
 - (void)presentModalViewController:(UMEViewController *)vc animated:(BOOL)animated;
 - (void)dismissModalViewControllerAnimated:(BOOL)animated;
 
-@property (nonatomic, readonly, retain) UMEViewController *modalViewController;
+@property (nonatomic, readonly, strong) UMEViewController *modalViewController;
 @property (nonatomic, assign) UMEModalTransitionStyle modalTransitionStyle;
 @end
 

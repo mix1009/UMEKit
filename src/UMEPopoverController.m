@@ -24,10 +24,6 @@
 }
 
 
-- (void)dealloc {
-    
-    [super dealloc];
-}
 
 
 - (void)setContentViewController:(UMEViewController *)viewController animated:(BOOL)animated {

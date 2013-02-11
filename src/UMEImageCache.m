@@ -24,7 +24,7 @@ NSImage *UMEImageNamed(NSString *name) {
     if (!img) {
         NSBundle *b = [NSBundle bundleForClass:[UMEBarButtonItem class]];
         
-        img = [[[NSImage alloc] initWithContentsOfFile:[b pathForImageResource:name]] autorelease];
+        img = [[NSImage alloc] initWithContentsOfFile:[b pathForImageResource:name]];
         [sImageCache setObject:img forKey:name];
     }
     

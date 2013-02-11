@@ -34,10 +34,6 @@
 }
 
 
-- (void)dealloc {
-    self.item = nil;
-    [super dealloc];
-}
 
 
 - (BOOL)isFlipped {

@@ -14,13 +14,13 @@
 
 @interface UMEBarButtonItem ()
 - (void)sizeToFit;
-@property (nonatomic) UMEBarStyle barStyle;            // default is UMEBarStyleDefault
+//@property (nonatomic) UMEBarStyle barStyle;            // default is UMEBarStyleDefault
 @property (nonatomic, getter=isFlexible) BOOL flexible;
 @end
 
 @interface UMEToolbar ()
 - (void)layoutItems;
-@property (nonatomic, retain) NSMutableArray *flexibleItems;
+@property (nonatomic, strong) NSMutableArray *flexibleItems;
 @end
 
 @implementation UMEToolbar
@@ -33,12 +33,6 @@
 }
 
 
-- (void)dealloc {
-    self.items = nil;
-    self.tintColor = nil;
-    self.flexibleItems = nil;
-    [super dealloc];
-}
 
 
 - (void)awakeFromNib {
@@ -112,8 +106,7 @@
             [item.customView removeFromSuperview];
         }
         
-        [items autorelease];
-        items = [a retain];
+        items = a;
         
         self.flexibleItems = [NSMutableArray array];
         //numNonSpaceItems = 0;

@@ -58,10 +58,6 @@ static NSImage *sBottomRightImage = nil;
 }
 
 
-- (void)dealloc {
-
-    [super dealloc];
-}
 
 
 #pragma mark -

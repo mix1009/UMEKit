@@ -22,7 +22,7 @@
     NSMutableArray *items;
     UMEBarStyle barStyle;
     CGFloat rightMargin;
-    id delegate;
+    id __strong delegate;
     
     UMENavigationItem *topItem;
     UMENavigationItem *backItem;
@@ -41,11 +41,11 @@
 - (UMENavigationItem *)popNavigationItemAnimated:(BOOL)animated;
 - (void)setItems:(NSArray *)items animated:(BOOL)animated; // If animated is YES, then simulate a push or pop depending on whether the new top item was previously in the stack.
 
-@property (nonatomic, readonly, retain) UMENavigationItem *topItem;
-@property (nonatomic, readonly, retain) UMENavigationItem *backItem;
+@property (nonatomic, readonly, strong) UMENavigationItem *topItem;
+@property (nonatomic, readonly, strong) UMENavigationItem *backItem;
 @property (nonatomic, assign) UMEBarStyle barStyle;
-@property (nonatomic, assign) id delegate;
-@property (nonatomic, retain) NSArray *items;
+@property (nonatomic, strong) id delegate;
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @protocol UMENavigationBarDelegate <NSObject>

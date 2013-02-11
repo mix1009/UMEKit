@@ -21,7 +21,7 @@
 @private
     NSString *title;
     UMEBarButtonItem *backBarButtonItem;
-    UMENavigationBar *navigationBar;
+    UMENavigationBar *__strong navigationBar;
     NSView *titleView;
     UMEBarButtonItem *leftBarButtonItem;
     UMEBarButtonItem *rightBarButtonItem;
@@ -37,13 +37,13 @@
 - (void)setRightBarButtonItem:(UMEBarButtonItem *)item animated:(BOOL)animated;
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, retain) UMEBarButtonItem *backBarButtonItem;
-@property (nonatomic, retain) NSView *titleView;         // Custom view to use in lieu of a title. May be sized horizontally. Only used when item is topmost on the stack.
+@property (nonatomic, strong) UMEBarButtonItem *backBarButtonItem;
+@property (nonatomic, strong) NSView *titleView;         // Custom view to use in lieu of a title. May be sized horizontally. Only used when item is topmost on the stack.
 @property (nonatomic, assign) BOOL hidesBackButton;
 
-@property (nonatomic, retain) UMEBarButtonItem *leftBarButtonItem;
-@property (nonatomic, retain) UMEBarButtonItem *rightBarButtonItem;
+@property (nonatomic, strong) UMEBarButtonItem *leftBarButtonItem;
+@property (nonatomic, strong) UMEBarButtonItem *rightBarButtonItem;
 
-@property (nonatomic, retain) NSView *customLeftView;
-@property (nonatomic, retain) NSView *customRightView;
+@property (nonatomic, strong) NSView *customLeftView;
+@property (nonatomic, strong) NSView *customRightView;
 @end

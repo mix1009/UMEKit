@@ -41,13 +41,13 @@
 - (CAAnimation *)coverVerticalOutAnimation;
 - (CAAnimation *)crossDissolveAnimation;
 
-@property (nonatomic, retain) NSView *containerView;
-@property (nonatomic, readwrite, retain) UMEViewController *topViewController;
-@property (nonatomic, readwrite, retain) UMENavigationBar *navigationBar;
-@property (nonatomic, readwrite, retain) UMEViewController *modalViewController;
+@property (nonatomic, strong) NSView *containerView;
+@property (nonatomic, readwrite, strong) UMEViewController *topViewController;
+@property (nonatomic, readwrite, strong) UMENavigationBar *navigationBar;
+@property (nonatomic, readwrite, strong) UMEViewController *modalViewController;
 
-@property (nonatomic, retain) NSDictionary *pushAnimations;
-@property (nonatomic, retain) NSDictionary *popAnimations;
+@property (nonatomic, strong) NSDictionary *pushAnimations;
+@property (nonatomic, strong) NSDictionary *popAnimations;
 @end
 
 @implementation UMENavigationController
@@ -76,28 +76,20 @@
 - (void)dealloc {
     [containerView removeFromSuperview];
     [navigationBar removeFromSuperview];
-    self.containerView = nil;
-    self.navigationBar = nil;
-    self.viewControllers = nil;
-    self.modalViewController = nil;
     self.delegate = nil;
-    self.topViewController = nil;
-    self.pushAnimations = nil;
-    self.popAnimations = nil;
-    [super dealloc];
 }
 
 
 - (void)loadView {
-    self.view = [[[UMEFlippedView alloc] initWithFrame:NSZeroRect] autorelease];
+    self.view = [[UMEFlippedView alloc] initWithFrame:NSZeroRect];
     [self.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [self.view setWantsLayer:YES];
 
-    self.navigationBar = [[[UMENavigationBar alloc] initWithFrame:NSMakeRect(0, 0, 0, NAVBAR_HEIGHT)] autorelease];
+    self.navigationBar = [[UMENavigationBar alloc] initWithFrame:NSMakeRect(0, 0, 0, NAVBAR_HEIGHT)];
     [navigationBar setAutoresizingMask:NSViewWidthSizable];
     [self.view addSubview:navigationBar];
     
-    self.containerView = [[[UMEFlippedView alloc] initWithFrame:NSMakeRect(0, NAVBAR_HEIGHT, 0, 0)] autorelease];
+    self.containerView = [[UMEFlippedView alloc] initWithFrame:NSMakeRect(0, NAVBAR_HEIGHT, 0, 0)];
     [self.containerView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [self.view addSubview:containerView];
     
@@ -186,10 +178,10 @@
         if (!backTitle) {
             backTitle = NSLocalizedString(@"Back", @"");
         }
-        backItem = [[[UMEBarButtonItem alloc] initWithTitle:backTitle 
+        backItem = [[UMEBarButtonItem alloc] initWithTitle:backTitle 
                                                       style:UMEBarButtonItemStyleBack 
                                                      target:self 
-                                                     action:@selector(UMEBackItemClick:)] autorelease];
+                                                     action:@selector(UMEBackItemClick:)];
         vc.navigationItem.backBarButtonItem = backItem;
     }
 }
@@ -212,7 +204,7 @@
     UMEViewController *vc = nil;
 
     if ([viewControllers count]) {
-        vc = [[[viewControllers lastObject] retain] autorelease];
+        vc = [viewControllers lastObject];
         [viewControllers removeLastObject];
         self.topViewController = nil;
     }
@@ -297,7 +289,7 @@
         [result addObject:[self popViewControllerAnimated:(animated && isNextTarget)]];
     }
         
-    return [[result copy] autorelease];
+    return [result copy];
 }
 
 
@@ -435,7 +427,7 @@
     if (![self isViewLoaded]) {
         [self loadView];
     }
-    return [[containerView retain] autorelease];
+    return containerView;
 }
 
 

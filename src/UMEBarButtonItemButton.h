@@ -17,8 +17,8 @@
 @class UMEBarButtonItem;
 
 @interface UMEBarButtonItemButton : NSButton {
-    UMEBarButtonItem *item;
+    UMEBarButtonItem *__strong item;
 }
 
-@property (nonatomic, assign) UMEBarButtonItem *item;
+@property (nonatomic, strong) UMEBarButtonItem *item;
 @end

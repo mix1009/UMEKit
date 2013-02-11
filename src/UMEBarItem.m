@@ -28,11 +28,6 @@
 }
 
 
-- (void)dealloc {
-    self.title = nil;
-    self.image = nil;
-    [super dealloc];
-}
 
 @synthesize enabled;
 @synthesize title;

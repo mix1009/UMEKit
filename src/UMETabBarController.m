@@ -40,9 +40,9 @@
 - (void)setUpTabBarItems;
 - (void)highlightButtonAtIndex:(NSInteger)i;
 
-@property (nonatomic, readwrite, retain) UMETabBar *tabBar;
-@property (nonatomic, retain) NSArray *tabBarItems;
-@property (nonatomic, retain) UMETabBarItem *selectedTabBarItem;
+@property (nonatomic, readwrite, strong) UMETabBar *tabBar;
+@property (nonatomic, strong) NSArray *tabBarItems;
+@property (nonatomic, strong) UMETabBarItem *selectedTabBarItem;
 @end
 
 @implementation UMETabBarController
@@ -63,27 +63,21 @@
         [item.button removeFromSuperview];
     }
 
-    self.tabBar = nil;
-    self.containerView = nil;
     self.delegate = nil;
-    self.viewControllers = nil;
     self.selectedViewController = nil;
-    self.tabBarItems = nil;
-    self.selectedTabBarItem = nil;
-    [super dealloc];
 }
 
 
 - (void)loadView {
-    self.view = [[[UMEFlippedView alloc] initWithFrame:NSZeroRect] autorelease];
+    self.view = [[UMEFlippedView alloc] initWithFrame:NSZeroRect];
     [self.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [self.view setWantsLayer:YES];
     
-    self.tabBar = [[[UMETabBar alloc] initWithFrame:NSMakeRect(0, 0, 0, TABBAR_HEIGHT)] autorelease];
+    self.tabBar = [[UMETabBar alloc] initWithFrame:NSMakeRect(0, 0, 0, TABBAR_HEIGHT)];
     [tabBar setAutoresizingMask:NSViewWidthSizable|NSViewMinYMargin];
     [self.view addSubview:tabBar];
     
-    self.containerView = [[[UMEFlippedView alloc] initWithFrame:NSZeroRect] autorelease];
+    self.containerView = [[UMEFlippedView alloc] initWithFrame:NSZeroRect];
     [self.containerView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [self.view addSubview:containerView];
     
@@ -326,7 +320,6 @@
 
 - (void)setViewControllers:(NSArray *)vcs {
     if (viewControllers != vcs) {
-        [viewControllers release];
         viewControllers = [vcs copy];
         self.selectedIndex = 0;
         
@@ -371,7 +364,7 @@
             
             UMETabBarItem *item = [vc tabBarItem];
             if (!item) {
-                item = [[[UMETabBarItem alloc] initWithTitle:vc.title image:nil tag:tag++] autorelease];
+                item = [[UMETabBarItem alloc] initWithTitle:vc.title image:nil tag:tag++];
             }
 
             [item.button setAutoresizingMask:NSViewWidthSizable|NSViewMinXMargin|NSViewMaxXMargin];
@@ -383,7 +376,7 @@
         }
     }
     
-    self.tabBarItems = [[items copy] autorelease];
+    self.tabBarItems = [items copy];
 }
 
 

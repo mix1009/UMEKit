@@ -16,7 +16,7 @@
 #import "UMETabBarItemButton.h"
 
 @interface UMETabBarItem ()
-@property (nonatomic, retain) NSButton *button;
+@property (nonatomic, strong) NSButton *button;
 @end
 
 @implementation UMETabBarItem
@@ -93,8 +93,8 @@
             break;
     }
     
-    NSImage *img = [[[NSImage alloc] initWithContentsOfFile:imgPath] autorelease];
-    NSImage *imgHi = [[[NSImage alloc] initWithContentsOfFile:imgHiPath] autorelease];
+    NSImage *img = [[NSImage alloc] initWithContentsOfFile:imgPath];
+    NSImage *imgHi = [[NSImage alloc] initWithContentsOfFile:imgHiPath];
 
     self = [self initWithTitle:aTitle image:img tag:aTag];
     [button setAlternateImage:imgHi];
@@ -105,7 +105,7 @@
 
 - (id)initWithTitle:(NSString *)aTitle image:(NSImage *)img tag:(NSInteger)aTag {
     if (self = [super init]) {
-        self.button = [[[UMETabBarItemButton alloc] initWithFrame:NSZeroRect] autorelease];
+        self.button = [[UMETabBarItemButton alloc] initWithFrame:NSZeroRect];
         
         self.title = aTitle;
         self.image = img;
@@ -117,9 +117,6 @@
 
 - (void)dealloc {
     [button removeFromSuperview];
-    self.button = nil;
-    self.badgeValue = nil;
-    [super dealloc];
 }
 
 

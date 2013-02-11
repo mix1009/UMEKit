@@ -27,7 +27,7 @@
 @interface UMEBarButtonItem ()
 - (void)sizeToFit;
 - (void)layout;
-@property (nonatomic, retain) NSButton *button;
+//@property (nonatomic, retain) NSButton *button;
 @end
 
 @interface UMENavigationItem ()
@@ -44,14 +44,14 @@
 
 - (void)layout;
 
-@property (nonatomic, readwrite, retain) UMENavigationItem *topItem;
-@property (nonatomic, readwrite, retain) UMENavigationItem *backItem;
-@property (nonatomic, retain) NSView *containerView;
-@property (nonatomic, retain) NSTextField *label;
-@property (nonatomic, retain) UMEBarButtonItem *leftBarButtonItem;
-@property (nonatomic, retain) UMEBarButtonItem *rightBarButtonItem;
-@property (nonatomic, retain) NSDictionary *pushAnimations;
-@property (nonatomic, retain) NSDictionary *popAnimations;
+@property (nonatomic, readwrite, strong) UMENavigationItem *topItem;
+@property (nonatomic, readwrite, strong) UMENavigationItem *backItem;
+@property (nonatomic, strong) NSView *containerView;
+@property (nonatomic, strong) NSTextField *label;
+@property (nonatomic, strong) UMEBarButtonItem *leftBarButtonItem;
+@property (nonatomic, strong) UMEBarButtonItem *rightBarButtonItem;
+@property (nonatomic, strong) NSDictionary *pushAnimations;
+@property (nonatomic, strong) NSDictionary *popAnimations;
 @end
 
 @implementation UMENavigationBar
@@ -73,17 +73,7 @@
     [label removeFromSuperview];
     [leftBarButtonItem.customView removeFromSuperview];
     [rightBarButtonItem.customView removeFromSuperview];
-    self.containerView = nil;
-    self.items = nil;
     self.delegate = nil;
-    self.topItem = nil;
-    self.backItem = nil;
-    self.label = nil;
-    self.leftBarButtonItem = nil;
-    self.rightBarButtonItem = nil;
-    self.pushAnimations = nil;
-    self.popAnimations = nil;
-    [super dealloc];
 }
 
 
@@ -111,7 +101,7 @@
     [tf setAlignment:NSCenterTextAlignment];
     [[tf cell] setLineBreakMode:NSLineBreakByTruncatingTail];
     
-    NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
+    NSShadow *shadow = [[NSShadow alloc] init];
     [shadow setShadowColor:[[NSColor blackColor] colorWithAlphaComponent:0.7]];
     [shadow setShadowOffset:NSMakeSize(0, 1)];
     [shadow setShadowBlurRadius:0];
@@ -138,7 +128,7 @@
 
 
 - (UMENavigationItem *)popNavigationItemAnimated:(BOOL)animated {
-    UMENavigationItem *item = [[topItem retain] autorelease];
+    UMENavigationItem *item = topItem;
     
     if (item) {
         if (delegate && [delegate respondsToSelector:@selector(navigationBar:shouldPopItem:)]) {
@@ -192,11 +182,11 @@
         backItem.navigationBar = self;
         
         if (newTopItem) {
-            NSView *newContainerView = [[self newContainerView] autorelease];
+            NSView *newContainerView = [self newContainerView];
 
             NSString *s = newTopItem.title;
             if ([s length]) {
-                self.label = [[self newTitleLabel] autorelease];
+                self.label = [self newTitleLabel];
                 [label setStringValue:s];
                 [newContainerView addSubview:label];
             }

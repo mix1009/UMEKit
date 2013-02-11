@@ -142,11 +142,11 @@
     }
     
     if (self.isSpace) {
-        self = [self initWithCustomView:[[[NSView alloc] initWithFrame:NSZeroRect] autorelease]];
+        self = [self initWithCustomView:[[NSView alloc] initWithFrame:NSZeroRect]];
     } else {
         self = [self initWithTitle:aTitle style:aStyle target:t action:sel];
         if ([imgPath length]) {
-            self.image = [[[NSImage alloc] initWithContentsOfFile:imgPath] autorelease];
+            self.image = [[NSImage alloc] initWithContentsOfFile:imgPath];
         }
         [button setImagePosition:imgPos];
     }
@@ -175,7 +175,7 @@
         if (CUSTOM_VIEW_FLAG == aStyle) {
             self.style = UMEBarButtonItemStylePlain;
         } else {
-            self.button = [[[UMEBarButtonItemButton alloc] initWithFrame:NSZeroRect] autorelease];
+            self.button = [[UMEBarButtonItemButton alloc] initWithFrame:NSZeroRect];
             [button setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
             [(UMEBarButtonItemButton *)button setItem:self];
             self.style = aStyle;
@@ -187,7 +187,7 @@
         self.barStyle = UMEBarStyleDefault;
         
         if (CUSTOM_VIEW_FLAG != aStyle) {
-            self.customView = [[[UMEFlippedView alloc] initWithFrame:NSZeroRect] autorelease];
+            self.customView = [[UMEFlippedView alloc] initWithFrame:NSZeroRect];
         }
     }
     return self;
@@ -198,10 +198,8 @@
     [button removeFromSuperview];
     [customView removeFromSuperview];
     self.customView = nil;
-    self.button = nil;
     self.target = nil;
     self.action = nil;
-    [super dealloc];
 }
 
 
@@ -289,8 +287,7 @@
 
 - (void)setCustomView:(NSView *)v {
     if (customView != v) {
-        [customView autorelease];
-        customView = [v retain];
+        customView = v;
         
         [customView addSubview:button];
     }

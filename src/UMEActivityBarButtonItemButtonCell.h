@@ -23,8 +23,8 @@
 	BOOL spinning;
 }
 
-@property (nonatomic, retain) NSTimer *timer;
-@property (nonatomic, retain) NSControl *parentControl;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSControl *parentControl;
 
 @property (nonatomic) double doubleValue;
 @property (nonatomic) NSTimeInterval animationDelay;

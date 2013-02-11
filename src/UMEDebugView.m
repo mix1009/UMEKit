@@ -24,18 +24,9 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
-
-
 - (void)removeFromSuperview {
     [super removeFromSuperview];
 }
 
-
-- (id)retain {
-    return [super retain];
-}
 
 @end

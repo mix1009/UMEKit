@@ -20,5 +20,5 @@
     UMETabBarController *tabBarController;
 }
 
-@property (nonatomic, retain) UMETabBarController *tabBarController;
+@property (nonatomic, strong) UMETabBarController *tabBarController;
 @end

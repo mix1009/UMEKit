@@ -44,7 +44,6 @@
 
 - (void)dealloc {
     self.item = nil;
-    [super dealloc];
 }
 
 

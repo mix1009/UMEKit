@@ -31,7 +31,7 @@ typedef enum NSUInteger {
 
 @interface UMEPopoverController : NSObject {
 @private
-    id delegate;
+    id __strong delegate;
     UMEViewController *contentViewController;
     NSView *popoverView;
     NSArray *passthroughViews;
@@ -59,11 +59,11 @@ typedef enum NSUInteger {
  */
 - (id)initWithContentViewController:(UMEViewController *)viewController;
 
-@property (nonatomic, assign) id <UMEPopoverControllerDelegate> delegate;
+@property (nonatomic, strong) id <UMEPopoverControllerDelegate> delegate;
 
 /* The content view controller is the `UMEViewController` instance in charge of the content view of the displayed popover. This property can be changed while the popover is displayed to allow different view controllers in the same popover session.
  */
-@property (nonatomic, retain) UMEViewController *contentViewController;
+@property (nonatomic, strong) UMEViewController *contentViewController;
 - (void)setContentViewController:(UMEViewController *)viewController animated:(BOOL)animated;
 
 /* This property allows direction manipulation of the content size of the popover. Changing the property directly is equivalent to animated=YES. The content size is limited to a minimum width of 320 and a maximum width of 600.

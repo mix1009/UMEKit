@@ -20,5 +20,5 @@
     UMETabBarItem *item;
 }
 
-@property (nonatomic, retain) UMETabBarItem *item;
+@property (nonatomic, strong) UMETabBarItem *item;
 @end

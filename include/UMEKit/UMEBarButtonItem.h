@@ -71,12 +71,12 @@ typedef enum {
 - (id)initWithImage:(NSImage *)image style:(UMEBarButtonItemStyle)style target:(id)target action:(SEL)action;
 - (id)initWithTitle:(NSString *)title style:(UMEBarButtonItemStyle)style target:(id)target action:(SEL)action;
 
-@property (nonatomic, retain) NSView *customView;
+@property (nonatomic, strong) NSView *customView;
 @property (nonatomic) UMEBarButtonItemStyle style;            // default is UMEBarButtonItemStylePlain
 @property (nonatomic) UMEBarStyle barStyle;            // default is UMEBarStyleDefault
 @property (nonatomic) CGFloat width;            // default is 0.0
 @property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (nonatomic, assign) id target;
+@property (nonatomic, strong) id target;
 @property (nonatomic) SEL action;
-@property (nonatomic, retain) NSButton *button;
+@property (nonatomic, strong) NSButton *button;
 @end

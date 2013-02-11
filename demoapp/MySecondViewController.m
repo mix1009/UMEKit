@@ -26,10 +26,6 @@
 }
 
 
-- (void)dealloc {
-    
-    [super dealloc];
-}
 
 
 - (void)viewDidLoad {
@@ -63,7 +59,7 @@
 
 
 - (IBAction)click:(id)sender {
-    MyThirdViewController *vc = [[[MyThirdViewController alloc] init] autorelease];
+    MyThirdViewController *vc = [[MyThirdViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 //    [self.navigationController popToRootViewControllerAnimated:YES];
 }

@@ -16,7 +16,7 @@
 #import "UMEActivityBarButtonItemButtonCell.h"
 
 @interface UMEActivityBarButtonItemButton ()
-@property (nonatomic, retain) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation UMEActivityBarButtonItemButton
@@ -34,10 +34,6 @@
 }
 
 
-- (void)dealloc {
-    self.timer = nil;
-    [super dealloc];
-}
 
 
 - (BOOL)isHighlighted {

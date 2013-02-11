@@ -20,39 +20,35 @@
 
 @implementation DemoAppDelegate
 
-- (void)dealloc {
-    self.tabBarController = nil;
-    [super dealloc];
-}
 
 
 - (void)awakeFromNib {
-    UMEViewController *vc1 = [[[MyRootViewController alloc] init] autorelease];
-    UMENavigationController *nc1 = [[[UMENavigationController alloc] initWithRootViewController:vc1] autorelease];
+    UMEViewController *vc1 = [[MyRootViewController alloc] init];
+    UMENavigationController *nc1 = [[UMENavigationController alloc] initWithRootViewController:vc1];
     nc1.title = @"One";
-    nc1.tabBarItem = [[[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemMostRecent tag:1] autorelease];
+    nc1.tabBarItem = [[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemMostRecent tag:1];
     
-    UMEViewController *vc2 = [[[MyRootViewController alloc] init] autorelease];
-    UMENavigationController *nc2 = [[[UMENavigationController alloc] initWithRootViewController:vc2] autorelease];
+    UMEViewController *vc2 = [[MyRootViewController alloc] init];
+    UMENavigationController *nc2 = [[UMENavigationController alloc] initWithRootViewController:vc2];
     nc2.title = @"Two";
-    nc2.tabBarItem = [[[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemFavorites tag:2] autorelease];
+    nc2.tabBarItem = [[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemFavorites tag:2];
 
-    UMEViewController *vc3 = [[[MyRootViewController alloc] init] autorelease];
-    UMENavigationController *nc3 = [[[UMENavigationController alloc] initWithRootViewController:vc3] autorelease];
+    UMEViewController *vc3 = [[MyRootViewController alloc] init];
+    UMENavigationController *nc3 = [[UMENavigationController alloc] initWithRootViewController:vc3];
     nc3.title = @"Three";
-    nc3.tabBarItem = [[[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemMostViewed tag:3] autorelease];
+    nc3.tabBarItem = [[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemMostViewed tag:3];
     
-    UMEViewController *vc4 = [[[MyRootViewController alloc] init] autorelease];
-    UMENavigationController *nc4 = [[[UMENavigationController alloc] initWithRootViewController:vc4] autorelease];
+    UMEViewController *vc4 = [[MyRootViewController alloc] init];
+    UMENavigationController *nc4 = [[UMENavigationController alloc] initWithRootViewController:vc4];
     nc4.title = @"Four";
-    nc4.tabBarItem = [[[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemRecents tag:4] autorelease];
+    nc4.tabBarItem = [[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemRecents tag:4];
     
-    UMEViewController *vc5 = [[[MyRootViewController alloc] init] autorelease];
-    UMENavigationController *nc5 = [[[UMENavigationController alloc] initWithRootViewController:vc5] autorelease];
+    UMEViewController *vc5 = [[MyRootViewController alloc] init];
+    UMENavigationController *nc5 = [[UMENavigationController alloc] initWithRootViewController:vc5];
     nc5.title = @"Three";
-    nc5.tabBarItem = [[[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemContacts tag:5] autorelease];
+    nc5.tabBarItem = [[UMETabBarItem alloc] initWithTabBarSystemItem:UMETabBarSystemItemContacts tag:5];
     
-    self.tabBarController= [[[UMETabBarController alloc] init] autorelease];
+    self.tabBarController= [[UMETabBarController alloc] init];
     tabBarController.viewControllers = [NSArray arrayWithObjects:nc1, nc2, nc3, nc4, nc5, nil];
 
     NSView *view = tabBarController.view;

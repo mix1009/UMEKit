@@ -46,14 +46,14 @@ static NSShadow *sTitleShadow = nil;
 
 + (void)initialize {
     if ([UMEBarButtonItemButtonCell class] == self) {
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
 
-        sTitleShadow = [[NSShadow alloc] init];
-        [sTitleShadow setShadowColor:[[NSColor blackColor] colorWithAlphaComponent:0.7]];
-        [sTitleShadow setShadowOffset:NSMakeSize(0, 1)];
-        [sTitleShadow setShadowBlurRadius:0];
+            sTitleShadow = [[NSShadow alloc] init];
+            [sTitleShadow setShadowColor:[[NSColor blackColor] colorWithAlphaComponent:0.7]];
+            [sTitleShadow setShadowOffset:NSMakeSize(0, 1)];
+            [sTitleShadow setShadowBlurRadius:0];
 
-        [pool drain];
+        }
     }
 }
 
@@ -81,9 +81,6 @@ static NSShadow *sTitleShadow = nil;
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 - (BOOL)isOpaque {

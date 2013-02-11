@@ -20,7 +20,7 @@
 @end
 
 @interface UMENavigationItem ()
-@property (nonatomic, assign) UMENavigationBar *navigationBar;
+@property (nonatomic, strong) UMENavigationBar *navigationBar;
 @end
 
 @interface UMENavigationBar ()
@@ -47,15 +47,9 @@
     [customLeftView removeFromSuperview];
     [customRightView removeFromSuperview];
     self.navigationBar = nil;
-    self.title = nil;
-    self.backBarButtonItem = nil;
     self.navigationBar = nil;
-    self.titleView = nil;
     self.leftBarButtonItem = nil;
     self.rightBarButtonItem = nil;
-    self.customLeftView = nil;
-    self.customRightView = nil;
-    [super dealloc];
 }
 
 
@@ -66,8 +60,7 @@
 
 - (void)setTitle:(NSString *)s {
     if (s != title) {
-        [title autorelease];
-        title = [s retain];
+        title = s;
         
         [navigationBar layout];
     }
@@ -94,8 +87,7 @@
 
 - (void)setRightBarButtonItem:(UMEBarButtonItem *)item {
     if (item != rightBarButtonItem) {
-        [rightBarButtonItem autorelease];
-        rightBarButtonItem = [item retain];
+        rightBarButtonItem = item;
         
         [rightBarButtonItem layout];
         [navigationBar setTopItem:self backItem:navigationBar.backItem isPush:YES animated:NO];
@@ -108,8 +100,7 @@
 
 - (void)setLeftBarButtonItem:(UMEBarButtonItem *)item {
     if (item != leftBarButtonItem) {
-        [leftBarButtonItem autorelease];
-        leftBarButtonItem = [item retain];
+        leftBarButtonItem = item;
         
         [leftBarButtonItem layout];
         [navigationBar setTopItem:self backItem:navigationBar.backItem isPush:YES animated:NO];
