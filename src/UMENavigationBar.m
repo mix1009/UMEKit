@@ -252,6 +252,7 @@
 
 
 - (void)layout {
+    [super layout];
     CGFloat availWidth = NSWidth([self frame]);
     if (0 == availWidth) {
         return;
