@@ -106,7 +106,7 @@
             [item.customView removeFromSuperview];
         }
         
-        items = a;
+        items = [NSMutableArray arrayWithArray: a];
         
         self.flexibleItems = [NSMutableArray array];
         //numNonSpaceItems = 0;
